@@ -1,7 +1,5 @@
 package com.mindex.challenge.service.impl;
 
-import java.util.Date;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,10 @@ import com.mindex.challenge.dao.EmployeeRepository;
 import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.service.CompensationService;
 
+/**
+ * The implementation of the {@link com.mindex.challenge.service.CompensationService CompensationService}
+ * which is designed to act as the intermediary between the REST API and the db.
+ */
 @Service
 public class CompensationServiceImpl implements CompensationService {
     private static final Logger LOG = LoggerFactory.getLogger(CompensationServiceImpl.class);
@@ -22,6 +24,14 @@ public class CompensationServiceImpl implements CompensationService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    /**
+     * Creates a new {@link com.mindex.challenge.data.Compensation Compensation}
+     * and inserts it into the persistance layer.
+     * <p />
+     * @throws RuntimeException if <code>id</code> is null, <code>id</code> is
+     * blank or doesn't exist in the database, if <code>salary</code> is 0.0,
+     * and if the <code>effectiveDate</code> is null.
+     */
     @Override
     public Compensation create(Compensation comp) {
         LOG.debug("Creating compensation [{}]", comp);
@@ -49,6 +59,13 @@ public class CompensationServiceImpl implements CompensationService {
         return comp;
     }
 
+    /**
+     * Fetches the {@link com.mindex.challenge.data.Compensation Compensation}
+     * for a given <code>employeeId</code>.
+     * <p />
+     * @throws RuntimeException if the <code>employeeId</code> is not in the
+     * database.
+     */
     @Override
     public Compensation read(String id) {
         LOG.debug("Fetching compensation with id [{}]", id);

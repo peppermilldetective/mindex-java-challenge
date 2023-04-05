@@ -16,6 +16,13 @@ import com.mindex.challenge.data.Employee;
 import com.mindex.challenge.data.ReportingStructure;
 import com.mindex.challenge.service.ReportingStructureService;
 
+/**
+ * The implementation of the {@link com.mindex.challenge.service.ReportingStructureService ReportingStructureService}
+ * which is designed to act as the itermediary between the REST API for the
+ * "/directReport" endpoint and the backend db.
+ * <p />
+ * Does not commit anything to the database. It is only designed for fetching data.
+ */
 @Service
 public class ReportingStructureServiceImpl implements ReportingStructureService {
     private static final Logger LOG = LoggerFactory.getLogger(ReportingStructureServiceImpl.class);
@@ -23,13 +30,24 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    /**
+     * Using the given <code>employeeId</code>, fetches the employee and creates
+     * a {@link com.mindex.challenge.data.ReportingStructure ReportingService}
+     * containing the <code>employeeId</code> and the number of direct reports
+     * said employee has.
+     */
     @Override
-    public ReportingStructure read(String id) {
-        LOG.debug("Fetching reporting structure for employee with id [{}]", id);
+    public ReportingStructure read(String employeeId) {
+        LOG.debug("Fetching reporting structure for employee with id [{}]", employeeId);
+
+        Employee employee = employeeRepository.findByEmployeeId(employeeId);
+
+        if (employee == null) {
+            throw new RuntimeException("Invalid employee ID: " + employeeId);
+        }
 
         List<String> directReports =
-            employeeRepository
-                .findByEmployeeId(id)
+            employee
                 .getDirectReports();
 
         int numberOfDirectReports = directReports.size();
@@ -38,7 +56,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
             directReports = 
                 directReports.stream()
                     .map(e_id -> employeeRepository.findByEmployeeId(e_id))
-                    .flatMap(employee -> employee.getDirectReports().stream())
+                    .flatMap(e -> e.getDirectReports().stream())
                     .collect(Collectors.toList());
 
             numberOfDirectReports += directReports.size();
@@ -46,7 +64,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
 
         ReportingStructure rs =
             new ReportingStructure()
-                .setEmployeeId(id)
+                .setEmployeeId(employeeId)
                 .setNumberOfReports(numberOfDirectReports);
 
         return rs;
