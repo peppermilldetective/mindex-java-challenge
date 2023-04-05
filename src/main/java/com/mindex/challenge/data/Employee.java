@@ -9,8 +9,6 @@ public class Employee {
     private String lastName;
     private String position;
     private String department;
-    // Changed because the service was not filling out the whole Employee, so no need to
-    // send a full class when only the string was being used.
     private List<String> directReports;
 
     public Employee() {
