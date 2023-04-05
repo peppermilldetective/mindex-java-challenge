@@ -1,5 +1,6 @@
 package com.mindex.challenge.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Employee {
@@ -8,9 +9,13 @@ public class Employee {
     private String lastName;
     private String position;
     private String department;
-    private List<Employee> directReports;
+    // Changed because the service was not filling out the whole Employee, so no need to
+    // send a full class when only the string was being used.
+    private List<String> directReports;
 
     public Employee() {
+        // Initialized to empty list to remove nulls.
+        this.directReports = new ArrayList<>();
     }
 
     public String getEmployeeId() {
@@ -53,11 +58,11 @@ public class Employee {
         this.department = department;
     }
 
-    public List<Employee> getDirectReports() {
+    public List<String> getDirectReports() {
         return directReports;
     }
 
-    public void setDirectReports(List<Employee> directReports) {
+    public void setDirectReports(List<String> directReports) {
         this.directReports = directReports;
     }
 }

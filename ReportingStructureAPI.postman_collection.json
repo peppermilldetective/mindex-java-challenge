@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "0e2daf29-0101-42c9-9002-22311edecfc0",
+		"name": "ReportingStructure API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26743964"
+	},
+	"item": [
+		{
+			"name": "directReports/{id} John Lennon",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/directReports/16a596ae-edd3-4847-99fe-c4518e82c86f",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"directReports",
+						"16a596ae-edd3-4847-99fe-c4518e82c86f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "directReports/{id} Paul McCartney",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/directReports/b7839309-3348-463b-a7e3-5de1c168beb3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"directReports",
+						"b7839309-3348-463b-a7e3-5de1c168beb3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "directReports/{id} Ringo Starr",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/directReports/03aa1462-ffa9-4978-901b-7c001562cf6f",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"directReports",
+						"03aa1462-ffa9-4978-901b-7c001562cf6f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "directReports/{id} Pete Best",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/directReports/62c1084e-6e34-4630-93fd-9153afb65309",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"directReports",
+						"62c1084e-6e34-4630-93fd-9153afb65309"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "directReports/{id} George Harrison",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/directReports/c0c2293d-16bd-4603-8e08-638a9d18b22c",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"directReports",
+						"c0c2293d-16bd-4603-8e08-638a9d18b22c"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
