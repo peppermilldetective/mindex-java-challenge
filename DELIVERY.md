@@ -34,3 +34,7 @@
 ## Tests
 - Where possible, tests and their names and data matched the existing test for `EmployeeServiceImplTest` as an attempt to adhere to a coding standard.
 - Included with the repository are Postman collections that can be used to directly test the API. They do not include tests, but can act as a visual of the API working as designed.
+
+## Repository
+- The repository includes a `.gitignore` that is taken from [github's official gradle gitignore template](https://github.com/github/gitignore/blob/main/Gradle.gitignore).
+- A license is not included because I was unsure if one was desired. This can be changed if desired.
